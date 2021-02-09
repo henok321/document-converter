@@ -1,0 +1,21 @@
+jodconverter:
+  local:
+    enabled: true
+
+server:
+  port: 8080
+  error:
+    include-message: always
+    include-binding-errors: always
+    include-exception: true
+
+spring:
+  application:
+    name: libreoffice-service
+
+logging:
+  file:
+    name: libreoffice-service.log
+  level:
+    root: info
+    com.sipgate.unitaccountingservice: debug

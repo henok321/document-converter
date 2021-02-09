@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.4.0</version>
+    <relativePath/>
+  </parent>
+  <groupId>eu.henok</groupId>
+  <artifactId>document-converter</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>document-converter</name>
+  <description>service to convert documents via libreoffice</description>
+
+  <properties>
+    <java.version>11</java.version>
+    <jodconverter.version>4.4.0</jodconverter.version>
+    <pdfbox.version>2.0.22</pdfbox.version>
+  </properties>
+
+  <dependencies>
+
+    <!-- #### Spring #### -->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-web</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-devtools</artifactId>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+
+    <!-- #### Document #### -->
+    <dependency>
+      <groupId>org.jodconverter</groupId>
+      <artifactId>jodconverter-core</artifactId>
+      <version>${jodconverter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jodconverter</groupId>
+      <artifactId>jodconverter-local</artifactId>
+      <version>${jodconverter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jodconverter</groupId>
+      <artifactId>jodconverter-remote</artifactId>
+      <version>${jodconverter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jodconverter</groupId>
+      <artifactId>jodconverter-spring-boot-starter</artifactId>
+      <version>${jodconverter.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox</artifactId>
+      <version>${pdfbox.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.pdfbox</groupId>
+      <artifactId>pdfbox-tools</artifactId>
+      <version>${pdfbox.version}</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+
+  <profiles>
+    <profile>
+      <id>code-format</id>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <artifactId>fmt-maven-plugin</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>format</goal>
+                </goals>
+                <id>format</id>
+              </execution>
+            </executions>
+            <groupId>com.coveo</groupId>
+            <version>2.8</version>
+          </plugin>
+          <plugin>
+            <artifactId>maven-git-code-format</artifactId>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>install-hooks</goal>
+                </goals>
+                <id>install-formatter-hook</id>
+              </execution>
+              <execution>
+                <goals>
+                  <goal>validate-code-format</goal>
+                </goals>
+                <id>validate-code-format</id>
+              </execution>
+            </executions>
+            <groupId>com.cosium.code</groupId>
+            <version>1.24</version>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
+
+</project>
