@@ -1,6 +1,6 @@
-FROM openjdk:8-jdk-alpine
-RUN apk update
-RUN apk add libreoffice
+FROM openjdk:11
+RUN apt update
+RUN apt install libreoffice -y
 VOLUME /tmp
 ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
