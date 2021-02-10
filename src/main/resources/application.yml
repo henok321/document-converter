@@ -15,7 +15,7 @@ spring:
 
 logging:
   file:
-    name: libreoffice-service.log
+    name: logs/libreoffice-service.log
   level:
     root: info
     com.sipgate.unitaccountingservice: debug
