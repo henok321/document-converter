@@ -17,18 +17,18 @@ import org.springframework.web.multipart.MultipartFile;
 @Tag(name = "convert")
 public class DocumentConversionController {
 
-  final DocumentConversionService documentConversionService;
+  private final DocumentConversionService documentConversionService;
 
-  public DocumentConversionController(DocumentConversionService documentConversionService) {
+  public DocumentConversionController(final DocumentConversionService documentConversionService) {
     this.documentConversionService = documentConversionService;
   }
 
   @PostMapping(value = "/convert", produces = APPLICATION_OCTET_STREAM_VALUE)
   @Operation(summary = "convert a document")
   public ResponseEntity<byte[]> convertDocument(
-      @RequestParam("file") MultipartFile file,
-      @RequestParam("inputFormat") String inputFormat,
-      @RequestParam String outputFormat)
+      @RequestParam("file") final MultipartFile file,
+      @RequestParam("inputFormat") final String inputFormat,
+      @RequestParam final String outputFormat)
       throws IOException, OfficeException {
 
     return ResponseEntity.ok(

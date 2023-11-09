@@ -11,15 +11,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class DocumentConversionService {
 
-  final DocumentConverter converter;
+  private final DocumentConverter converter;
 
   public DocumentConversionService(DocumentConverter converter) {
     this.converter = converter;
   }
 
-  public byte[] convert(InputStream input, String inputFormat, String outputFormat)
+  public byte[] convert(
+      final InputStream input, final String inputFormat, final String outputFormat)
       throws OfficeException {
-    ByteArrayOutputStream output = new ByteArrayOutputStream();
+    final ByteArrayOutputStream output = new ByteArrayOutputStream();
     converter
         .convert(input)
         .as(Objects.requireNonNull(DefaultDocumentFormatRegistry.getFormatByExtension(inputFormat)))
