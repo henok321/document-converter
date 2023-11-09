@@ -13,11 +13,11 @@ spring:
   application:
     name: libreoffice-service
 
-springfox:
-  documentation:
-    swagger:
-      v2:
-        path: /swagger.json
+springdoc:
+  api-docs:
+    groups:
+      enabled: true
+  packages-to-scan: eu.henok.document.converter
 
 logging:
   file:

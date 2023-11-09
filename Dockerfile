@@ -1,4 +1,4 @@
-FROM openjdk:22
+FROM openjdk:21
 RUN apt update
 RUN apt install libreoffice -y
 VOLUME /tmp

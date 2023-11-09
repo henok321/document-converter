@@ -16,7 +16,7 @@
   <description>service to convert documents via libreoffice</description>
 
   <properties>
-    <java.version>11</java.version>
+    <java.version>21</java.version>
     <jodconverter.version>4.4.6</jodconverter.version>
     <pdfbox.version>3.0.0</pdfbox.version>
   </properties>
@@ -30,11 +30,6 @@
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-devtools</artifactId>
-      <scope>runtime</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
       <scope>test</scope>
     </dependency>
@@ -45,9 +40,9 @@
 
     <!-- #### OpenAPI #### -->
     <dependency>
-      <groupId>io.springfox</groupId>
-      <artifactId>springfox-boot-starter</artifactId>
-      <version>3.0.0</version>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
+      <version>2.2.0</version>
     </dependency>
 
     <!-- #### Document #### -->
@@ -101,36 +96,31 @@
       <build>
         <plugins>
           <plugin>
-            <artifactId>fmt-maven-plugin</artifactId>
+            <groupId>com.cosium.code</groupId>
+            <artifactId>git-code-format-maven-plugin</artifactId>
+            <version>4.3</version>
             <executions>
               <execution>
-                <goals>
-                  <goal>format</goal>
-                </goals>
-                <id>format</id>
-              </execution>
-            </executions>
-            <groupId>com.coveo</groupId>
-            <version>2.13</version>
-          </plugin>
-          <plugin>
-            <artifactId>maven-git-code-format</artifactId>
-            <executions>
-              <execution>
+                <id>install-formatter-hook</id>
                 <goals>
                   <goal>install-hooks</goal>
                 </goals>
-                <id>install-formatter-hook</id>
               </execution>
               <execution>
+                <id>format-sources</id>
+                <phase>verify</phase>
                 <goals>
-                  <goal>validate-code-format</goal>
+                  <goal>format-code</goal>
                 </goals>
-                <id>validate-code-format</id>
               </execution>
             </executions>
-            <groupId>com.cosium.code</groupId>
-            <version>1.39</version>
+            <dependencies>
+              <dependency>
+                <groupId>com.cosium.code</groupId>
+                <artifactId>google-java-format</artifactId>
+                <version>4.3</version>
+              </dependency>
+            </dependencies>
           </plugin>
         </plugins>
       </build>

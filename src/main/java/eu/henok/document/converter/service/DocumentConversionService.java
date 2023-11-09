@@ -2,6 +2,7 @@ package eu.henok.document.converter.service;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
+import java.util.Objects;
 import org.jodconverter.core.DocumentConverter;
 import org.jodconverter.core.document.DefaultDocumentFormatRegistry;
 import org.jodconverter.core.office.OfficeException;
@@ -21,9 +22,11 @@ public class DocumentConversionService {
     ByteArrayOutputStream output = new ByteArrayOutputStream();
     converter
         .convert(input)
-        .as(DefaultDocumentFormatRegistry.getFormatByExtension(inputFormat))
+        .as(Objects.requireNonNull(DefaultDocumentFormatRegistry.getFormatByExtension(inputFormat)))
         .to(output)
-        .as(DefaultDocumentFormatRegistry.getFormatByExtension(outputFormat))
+        .as(
+            Objects.requireNonNull(
+                DefaultDocumentFormatRegistry.getFormatByExtension(outputFormat)))
         .execute();
 
     return output.toByteArray();
