@@ -18,7 +18,7 @@
   <properties>
     <java.version>21</java.version>
     <jodconverter.version>4.4.6</jodconverter.version>
-    <pdfbox.version>3.0.0</pdfbox.version>
+    <pdfbox.version>3.0.3</pdfbox.version>
   </properties>
 
   <dependencies>
