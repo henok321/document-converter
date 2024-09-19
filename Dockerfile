@@ -1,4 +1,4 @@
-FROM azul/zulu-openjdk:21-latest
+FROM azul/zulu-openjdk:23-latest
 
 # Update package list and install LibreOffice
 RUN apt-get update && \
